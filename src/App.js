@@ -1,6 +1,7 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import { SwitchBtn } from './components/Switch';
+import { Container, ImageList, ImageListItem } from '@mui/material';
 
 function App() {
   const [data, setData] = useState(null);
@@ -27,6 +28,20 @@ function App() {
     <div className='App'>
       <h1>Hello World</h1>
       <SwitchBtn label='Safe Search' onClick={(e) => handleClick(e)} />
+      <Container
+        maxWidth='lg'
+        sx={{ display: 'flex', justifyContent: 'center' }}
+      >
+        {data && (
+          <ImageList sx={{ width: 960 }} variant={'masonry'} cols={4} gap={16}>
+            {data.map((item) => (
+              <ImageListItem key={item.media.m}>
+                <img src={item.media.m} alt={item.title} />
+              </ImageListItem>
+            ))}
+          </ImageList>
+        )}
+      </Container>
     </div>
   );
 }
