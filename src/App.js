@@ -1,7 +1,12 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import { SwitchBtn } from './components/Switch';
-import { Container, ImageList, ImageListItem } from '@mui/material';
+import {
+  Container,
+  ImageList,
+  ImageListItem,
+  ImageListItemBar,
+} from '@mui/material';
 
 function App() {
   const [data, setData] = useState(null);
@@ -37,6 +42,7 @@ function App() {
             {data.map((item) => (
               <ImageListItem key={item.media.m}>
                 <img src={item.media.m} alt={item.title} />
+                <ImageListItemBar title={item.title} subtitle={item.author} />
               </ImageListItem>
             ))}
           </ImageList>
