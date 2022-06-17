@@ -13,6 +13,7 @@ import {
 function App() {
   const [items, setItems] = useState(null);
   const [safeSearch, setSafeSearch] = useState(true);
+  const [input, setInput] = useState('');
 
   useEffect(() => {
     const path = '/api';
@@ -45,7 +46,7 @@ function App() {
           <Typography variant='h1' color={'white'}>
             Search Image
           </Typography>
-          <SearchField />
+          <SearchField input={input} setInput={setInput} />
         </Container>
       </section>
 
@@ -53,19 +54,22 @@ function App() {
         <Container maxWidth='lg'>
           {items && (
             <ImageList cols={4} rowHeight={164} gap={16}>
-              {items.map((item) => (
-                <ImageListItem key={item.media.m}>
-                  <img
-                    style={{ width: '100%', height: 164 }}
-                    src={item.media.m}
-                    alt={item.title}
-                  />
-                  <ImageListItemBar
-                    title={item.title}
-                    subtitle={<span>by: {item.author}</span>}
-                  />
-                </ImageListItem>
-              ))}
+              {items.map(
+                (item) =>
+                  item.tags.includes(input) && (
+                    <ImageListItem key={item.media.m}>
+                      <img
+                        style={{ width: '100%', height: 164 }}
+                        src={item.media.m}
+                        alt={item.title}
+                      />
+                      <ImageListItemBar
+                        title={item.title}
+                        subtitle={<span>by: {item.author}</span>}
+                      />
+                    </ImageListItem>
+                  )
+              )}
             </ImageList>
           )}
         </Container>
