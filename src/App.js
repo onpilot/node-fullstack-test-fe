@@ -49,16 +49,20 @@ function App() {
         </Container>
       </section>
 
-      <Container
-        maxWidth='lg'
-        sx={{ display: 'flex', justifyContent: 'center' }}
-      >
+      <Container maxWidth='lg'>
         {data && (
-          <ImageList sx={{ width: 960 }} variant={'masonry'} cols={4} gap={16}>
+          <ImageList cols={4} rowHeight={164} gap={16}>
             {data.map((item) => (
               <ImageListItem key={item.media.m}>
-                <img src={item.media.m} alt={item.title} />
-                <ImageListItemBar title={item.title} subtitle={item.author} />
+                <img
+                  style={{ width: '100%', height: 164 }}
+                  src={item.media.m}
+                  alt={item.title}
+                />
+                <ImageListItemBar
+                  title={item.title}
+                  subtitle={<span>by: {item.author}</span>}
+                />
               </ImageListItem>
             ))}
           </ImageList>
