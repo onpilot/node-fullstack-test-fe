@@ -28,16 +28,12 @@ function App() {
       .catch((err) => console.error(err));
   }, [safeSearch]);
 
-  const handleClick = (e) => {
-    setSafeSearch(e.target.checked);
-  };
-
   return (
     <div className='App'>
       <header className='header'>
         <div className='header__appname'>Flickr Public Feed</div>
         <div className='header__menu'>
-          <SwitchBtn label='Safe Search' onClick={(e) => handleClick(e)} />
+          <SwitchBtn setSafeSearch={setSafeSearch} />
         </div>
       </header>
 
