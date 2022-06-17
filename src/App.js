@@ -64,8 +64,13 @@ function App() {
                         alt={item.title}
                       />
                       <ImageListItemBar
-                        title={item.title}
-                        subtitle={<span>by: {item.author}</span>}
+                        title={item.title !== ' ' ? item.title : 'No Title'}
+                        subtitle={
+                          <span>
+                            <p>by: {item.author}</p>
+                            <small>tags: {item.tags || '-'}</small>
+                          </span>
+                        }
                       />
                     </ImageListItem>
                   )
