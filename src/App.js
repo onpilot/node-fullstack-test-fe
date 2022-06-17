@@ -49,25 +49,27 @@ function App() {
         </Container>
       </section>
 
-      <Container maxWidth='lg'>
-        {data && (
-          <ImageList cols={4} rowHeight={164} gap={16}>
-            {data.map((item) => (
-              <ImageListItem key={item.media.m}>
-                <img
-                  style={{ width: '100%', height: 164 }}
-                  src={item.media.m}
-                  alt={item.title}
-                />
-                <ImageListItemBar
-                  title={item.title}
-                  subtitle={<span>by: {item.author}</span>}
-                />
-              </ImageListItem>
-            ))}
-          </ImageList>
-        )}
-      </Container>
+      <section className='imagelist'>
+        <Container maxWidth='lg'>
+          {data && (
+            <ImageList cols={4} rowHeight={164} gap={16}>
+              {data.map((item) => (
+                <ImageListItem key={item.media.m}>
+                  <img
+                    style={{ width: '100%', height: 164 }}
+                    src={item.media.m}
+                    alt={item.title}
+                  />
+                  <ImageListItemBar
+                    title={item.title}
+                    subtitle={<span>by: {item.author}</span>}
+                  />
+                </ImageListItem>
+              ))}
+            </ImageList>
+          )}
+        </Container>
+      </section>
     </div>
   );
 }
