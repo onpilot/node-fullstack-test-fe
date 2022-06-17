@@ -18,6 +18,7 @@ function App() {
   const [safeSearch, setSafeSearch] = useState(true);
   const [input, setInput] = useState('');
 
+  // TODO: Fix `SearchField` component unable to function after re-fetching feeds
   const fetchData = () => {
     const path = '/api';
     const json = 'format=json';
@@ -25,6 +26,7 @@ function App() {
     let safe_search;
     safeSearch ? (safe_search = 1) : (safe_search = 0);
 
+    // TODO: Handle duplicate feed data items, then it'll be safe if we want to implement pagination
     fetch(`${path}?${json}&safe_search=${safe_search}`)
       .then((res) => res.json())
       .then((data) => setItems((prev) => [...prev, ...data.data.items]))
