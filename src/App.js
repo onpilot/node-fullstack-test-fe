@@ -2,6 +2,8 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import { SwitchBtn } from './components/SwitchBtn';
 import { SearchField } from './components/SearchField';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 import {
   Container,
   ImageList,
@@ -54,10 +56,12 @@ function App() {
                 (item) =>
                   item.tags.includes(input) && (
                     <ImageListItem key={item.media.m}>
-                      <img
-                        style={{ width: '100%', height: 164 }}
+                      <LazyLoadImage
                         src={item.media.m}
                         alt={item.title}
+                        height={164}
+                        width={'100%'}
+                        effect='blur'
                       />
                       <ImageListItemBar
                         title={item.title !== ' ' ? item.title : 'No Title'}
