@@ -1,2 +1,35 @@
 .App {
+  width: 100%;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 64px;
+  background-color: white;
+}
+
+.header__appname {
+  position: absolute;
+  left: 40px;
+  font-weight: bold;
+}
+
+.header__menu {
+  position: absolute;
+  right: 40px;
+}
+
+.hero {
+  height: 560px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #222;
+  background-image: url('./img/davide-pietralunga-OOOjE1y65BM.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 48px;
 }

@@ -1,11 +1,13 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import { SwitchBtn } from './components/Switch';
+import { SearchField } from './components/SearchField';
 import {
   Container,
   ImageList,
   ImageListItem,
   ImageListItemBar,
+  Typography,
 } from '@mui/material';
 
 function App() {
@@ -31,8 +33,22 @@ function App() {
 
   return (
     <div className='App'>
-      <h1>Hello World</h1>
-      <SwitchBtn label='Safe Search' onClick={(e) => handleClick(e)} />
+      <header className='header'>
+        <div className='header__appname'>Flickr Public Feed</div>
+        <div className='header__menu'>
+          <SwitchBtn label='Safe Search' onClick={(e) => handleClick(e)} />
+        </div>
+      </header>
+
+      <section className='hero center'>
+        <Container maxWidth='md'>
+          <Typography variant='h1' color={'white'}>
+            Search Image
+          </Typography>
+          <SearchField />
+        </Container>
+      </section>
+
       <Container
         maxWidth='lg'
         sx={{ display: 'flex', justifyContent: 'center' }}
