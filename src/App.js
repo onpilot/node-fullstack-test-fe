@@ -5,6 +5,7 @@ import { SearchField } from './components/SearchField';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import {
+  Button,
   Container,
   ImageList,
   ImageListItem,
@@ -13,11 +14,11 @@ import {
 } from '@mui/material';
 
 function App() {
-  const [items, setItems] = useState(null);
+  const [items, setItems] = useState([]);
   const [safeSearch, setSafeSearch] = useState(true);
   const [input, setInput] = useState('');
 
-  useEffect(() => {
+  const fetchData = () => {
     const path = '/api';
     const json = 'format=json';
 
@@ -26,9 +27,17 @@ function App() {
 
     fetch(`${path}?${json}&safe_search=${safe_search}`)
       .then((res) => res.json())
-      .then((data) => setItems(data.data.items))
+      .then((data) => setItems((prev) => [...prev, ...data.data.items]))
       .catch((err) => console.error(err));
-  }, [safeSearch]);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const handleClick = () => {
+    fetchData();
+  };
 
   return (
     <div className='App'>
@@ -79,6 +88,12 @@ function App() {
           )}
         </Container>
       </section>
+
+      <div className='loadmore center'>
+        <Button variant='outlined' onClick={() => handleClick()}>
+          Load More
+        </Button>
+      </div>
     </div>
   );
 }
