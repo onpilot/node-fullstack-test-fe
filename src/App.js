@@ -11,7 +11,7 @@ import {
 } from '@mui/material';
 
 function App() {
-  const [data, setData] = useState(null);
+  const [items, setItems] = useState(null);
   const [safeSearch, setSafeSearch] = useState(true);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ function App() {
 
     fetch(`${path}?${json}&safe_search=${safe_search}`)
       .then((res) => res.json())
-      .then((data) => setData(data.data.items))
+      .then((data) => setItems(data.data.items))
       .catch((err) => console.error(err));
   }, [safeSearch]);
 
@@ -51,9 +51,9 @@ function App() {
 
       <section className='imagelist'>
         <Container maxWidth='lg'>
-          {data && (
+          {items && (
             <ImageList cols={4} rowHeight={164} gap={16}>
-              {data.map((item) => (
+              {items.map((item) => (
                 <ImageListItem key={item.media.m}>
                   <img
                     style={{ width: '100%', height: 164 }}
