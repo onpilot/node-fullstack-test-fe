@@ -1,6 +1,6 @@
 import './App.css';
 import { useEffect, useState } from 'react';
-import { SwitchBtn } from './components/Switch';
+import { SwitchBtn } from './components/SwitchBtn';
 import { SearchField } from './components/SearchField';
 import {
   Container,
