@@ -7,6 +7,7 @@ export const SwitchBtn = ({ setSafeSearch }) => {
 
   return (
     <FormControlLabel
+      data-testid='safe-search'
       control={
         <Switch size='small' defaultChecked onClick={() => handleClick()} />
       }

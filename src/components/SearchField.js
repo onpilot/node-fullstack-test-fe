@@ -10,6 +10,7 @@ export const SearchField = ({ input, setInput }) => {
   return (
     <ThemeProvider theme={darkTheme}>
       <TextField
+        data-testid='search-field'
         value={input}
         onChange={(e) => setInput(e.target.value)}
         label='search by tag'
