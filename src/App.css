@@ -22,7 +22,7 @@
 }
 
 .hero {
-  height: 560px;
+  height: 360px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -36,4 +36,13 @@
 
 .imagelist {
   margin-bottom: 48px;
+}
+
+.loadmore {
+  margin-bottom: 120px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
 }
